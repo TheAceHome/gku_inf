@@ -1,0 +1,59 @@
+[2024-10-30T16:50:43.716+0000] {taskinstance.py:1171} INFO - Dependencies all met for <TaskInstance: marketstack_dag.fetch_stock_data manual__2024-10-30T16:30:26.730631+00:00 [queued]>
+[2024-10-30T16:50:43.724+0000] {taskinstance.py:1171} INFO - Dependencies all met for <TaskInstance: marketstack_dag.fetch_stock_data manual__2024-10-30T16:30:26.730631+00:00 [queued]>
+[2024-10-30T16:50:43.725+0000] {taskinstance.py:1368} INFO - 
+--------------------------------------------------------------------------------
+[2024-10-30T16:50:43.725+0000] {taskinstance.py:1369} INFO - Starting attempt 2 of 3
+[2024-10-30T16:50:43.725+0000] {taskinstance.py:1370} INFO - 
+--------------------------------------------------------------------------------
+[2024-10-30T16:50:43.735+0000] {taskinstance.py:1389} INFO - Executing <Task(PythonOperator): fetch_stock_data> on 2024-10-30 16:30:26.730631+00:00
+[2024-10-30T16:50:43.739+0000] {standard_task_runner.py:52} INFO - Started process 207 to run task
+[2024-10-30T16:50:43.740+0000] {standard_task_runner.py:79} INFO - Running: ['***', 'tasks', 'run', 'marketstack_dag', 'fetch_stock_data', 'manual__2024-10-30T16:30:26.730631+00:00', '--job-id', '10', '--raw', '--subdir', 'DAGS_FOLDER/stage.py', '--cfg-path', '/tmp/tmph_qwoacg', '--error-file', '/tmp/tmpwm6n8e2q']
+[2024-10-30T16:50:43.741+0000] {standard_task_runner.py:80} INFO - Job 10: Subtask fetch_stock_data
+[2024-10-30T16:50:43.779+0000] {task_command.py:371} INFO - Running <TaskInstance: marketstack_dag.fetch_stock_data manual__2024-10-30T16:30:26.730631+00:00 [running]> on host 7028f6f95fdf
+[2024-10-30T16:50:43.826+0000] {taskinstance.py:1583} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=marketstack_dag
+AIRFLOW_CTX_TASK_ID=fetch_stock_data
+AIRFLOW_CTX_EXECUTION_DATE=2024-10-30T16:30:26.730631+00:00
+AIRFLOW_CTX_TRY_NUMBER=2
+AIRFLOW_CTX_DAG_RUN_ID=manual__2024-10-30T16:30:26.730631+00:00
+[2024-10-30T16:50:45.074+0000] {python.py:173} INFO - Done. Returned value was:        open    high       low  ...  symbol  exchange                      date
+0   428.000  433.17  425.8000  ...    MSFT      XNAS  2024-10-29T00:00:00+0000
+1   233.195  234.32  232.3200  ...    AAPL      XNAS  2024-10-29T00:00:00+0000
+2   167.730  170.38  167.0896  ...   GOOGL      XNAS  2024-10-29T00:00:00+0000
+3   431.655  431.94  426.3400  ...    MSFT      XNAS  2024-10-28T00:00:00+0000
+4   233.315  234.73  232.5500  ...    AAPL      XNAS  2024-10-28T00:00:00+0000
+..      ...     ...       ...  ...     ...       ...                       ...
+95  157.310  158.25  156.6000  ...   GOOGL      XNAS  2024-09-16T00:00:00+0000
+96  155.430  158.38  155.2100  ...   GOOGL      XNAS  2024-09-13T00:00:00+0000
+97  223.580  224.04  221.9100  ...    AAPL      XNAS  2024-09-13T00:00:00+0000
+98  425.830  431.83  425.4600  ...    MSFT      XNAS  2024-09-13T00:00:00+0000
+99  423.310  427.37  419.7500  ...    MSFT      XNAS  2024-09-12T00:00:00+0000
+
+[100 rows x 15 columns]
+[2024-10-30T16:50:45.098+0000] {xcom.py:586} ERROR - Could not serialize the XCom value into JSON. If you are using pickle instead of JSON for XCom, then you need to enable pickle support for XCom in your *** config.
+[2024-10-30T16:50:45.098+0000] {taskinstance.py:1902} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 68, in wrapper
+    return func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/taskinstance.py", line 2405, in xcom_push
+    session=session,
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 68, in wrapper
+    return func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/xcom.py", line 198, in set
+    map_index=map_index,
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/xcom.py", line 583, in serialize_value
+    return json.dumps(value).encode('UTF-8')
+  File "/usr/local/lib/python3.7/json/__init__.py", line 231, in dumps
+    return _default_encoder.encode(obj)
+  File "/usr/local/lib/python3.7/json/encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/local/lib/python3.7/json/encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/local/lib/python3.7/json/encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type DataFrame is not JSON serializable
+[2024-10-30T16:50:45.105+0000] {taskinstance.py:1412} INFO - Marking task as UP_FOR_RETRY. dag_id=marketstack_dag, task_id=fetch_stock_data, execution_date=20241030T163026, start_date=20241030T165043, end_date=20241030T165045
+[2024-10-30T16:50:45.114+0000] {standard_task_runner.py:97} ERROR - Failed to execute job 10 for task fetch_stock_data (Object of type DataFrame is not JSON serializable; 207)
+[2024-10-30T16:50:45.156+0000] {local_task_job.py:156} INFO - Task exited with return code 1
+[2024-10-30T16:50:45.183+0000] {local_task_job.py:279} INFO - 0 downstream tasks scheduled from follow-on schedule check

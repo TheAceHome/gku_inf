@@ -1,0 +1,24 @@
+[2024-11-06T09:27:10.158+0000] {taskinstance.py:1171} INFO - Dependencies all met for <TaskInstance: marketstack_dag.fetch_stock_data scheduled__2024-11-01T00:00:00+00:00 [queued]>
+[2024-11-06T09:27:10.169+0000] {taskinstance.py:1171} INFO - Dependencies all met for <TaskInstance: marketstack_dag.fetch_stock_data scheduled__2024-11-01T00:00:00+00:00 [queued]>
+[2024-11-06T09:27:10.169+0000] {taskinstance.py:1368} INFO - 
+--------------------------------------------------------------------------------
+[2024-11-06T09:27:10.169+0000] {taskinstance.py:1369} INFO - Starting attempt 1 of 2
+[2024-11-06T09:27:10.170+0000] {taskinstance.py:1370} INFO - 
+--------------------------------------------------------------------------------
+[2024-11-06T09:27:10.193+0000] {taskinstance.py:1389} INFO - Executing <Task(PythonOperator): fetch_stock_data> on 2024-11-01 00:00:00+00:00
+[2024-11-06T09:27:10.205+0000] {standard_task_runner.py:52} INFO - Started process 98 to run task
+[2024-11-06T09:27:10.207+0000] {standard_task_runner.py:79} INFO - Running: ['***', 'tasks', 'run', 'marketstack_dag', 'fetch_stock_data', 'scheduled__2024-11-01T00:00:00+00:00', '--job-id', '33', '--raw', '--subdir', 'DAGS_FOLDER/stage.py', '--cfg-path', '/tmp/tmp_n7kdgdb', '--error-file', '/tmp/tmpab6_p8ao']
+[2024-11-06T09:27:10.209+0000] {standard_task_runner.py:80} INFO - Job 33: Subtask fetch_stock_data
+[2024-11-06T09:27:10.272+0000] {task_command.py:371} INFO - Running <TaskInstance: marketstack_dag.fetch_stock_data scheduled__2024-11-01T00:00:00+00:00 [running]> on host dd55d6bc6a7f
+[2024-11-06T09:27:10.369+0000] {taskinstance.py:1583} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=marketstack_dag
+AIRFLOW_CTX_TASK_ID=fetch_stock_data
+AIRFLOW_CTX_EXECUTION_DATE=2024-11-01T00:00:00+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2024-11-01T00:00:00+00:00
+[2024-11-06T09:27:10.915+0000] {base.py:68} INFO - Using connection ID 'datapstg' for task execution.
+[2024-11-06T09:27:10.943+0000] {python.py:173} INFO - Done. Returned value was: None
+[2024-11-06T09:27:10.954+0000] {taskinstance.py:1412} INFO - Marking task as SUCCESS. dag_id=marketstack_dag, task_id=fetch_stock_data, execution_date=20241101T000000, start_date=20241106T092710, end_date=20241106T092710
+[2024-11-06T09:27:10.983+0000] {local_task_job.py:156} INFO - Task exited with return code 0
+[2024-11-06T09:27:11.013+0000] {local_task_job.py:279} INFO - 1 downstream tasks scheduled from follow-on schedule check

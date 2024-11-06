@@ -1,0 +1,39 @@
+[2024-10-30T17:04:07.919+0000] {taskinstance.py:1171} INFO - Dependencies all met for <TaskInstance: marketstack_dag.fetch_stock_data manual__2024-10-30T16:30:26.730631+00:00 [queued]>
+[2024-10-30T17:04:07.925+0000] {taskinstance.py:1171} INFO - Dependencies all met for <TaskInstance: marketstack_dag.fetch_stock_data manual__2024-10-30T16:30:26.730631+00:00 [queued]>
+[2024-10-30T17:04:07.926+0000] {taskinstance.py:1368} INFO - 
+--------------------------------------------------------------------------------
+[2024-10-30T17:04:07.926+0000] {taskinstance.py:1369} INFO - Starting attempt 5 of 6
+[2024-10-30T17:04:07.926+0000] {taskinstance.py:1370} INFO - 
+--------------------------------------------------------------------------------
+[2024-10-30T17:04:07.936+0000] {taskinstance.py:1389} INFO - Executing <Task(PythonOperator): fetch_stock_data> on 2024-10-30 16:30:26.730631+00:00
+[2024-10-30T17:04:07.939+0000] {standard_task_runner.py:52} INFO - Started process 536 to run task
+[2024-10-30T17:04:07.941+0000] {standard_task_runner.py:79} INFO - Running: ['***', 'tasks', 'run', 'marketstack_dag', 'fetch_stock_data', 'manual__2024-10-30T16:30:26.730631+00:00', '--job-id', '15', '--raw', '--subdir', 'DAGS_FOLDER/stage.py', '--cfg-path', '/tmp/tmpcz_r743f', '--error-file', '/tmp/tmp5ygdfflr']
+[2024-10-30T17:04:07.942+0000] {standard_task_runner.py:80} INFO - Job 15: Subtask fetch_stock_data
+[2024-10-30T17:04:07.984+0000] {task_command.py:371} INFO - Running <TaskInstance: marketstack_dag.fetch_stock_data manual__2024-10-30T16:30:26.730631+00:00 [running]> on host dd55d6bc6a7f
+[2024-10-30T17:04:08.032+0000] {taskinstance.py:1583} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=marketstack_dag
+AIRFLOW_CTX_TASK_ID=fetch_stock_data
+AIRFLOW_CTX_EXECUTION_DATE=2024-10-30T16:30:26.730631+00:00
+AIRFLOW_CTX_TRY_NUMBER=5
+AIRFLOW_CTX_DAG_RUN_ID=manual__2024-10-30T16:30:26.730631+00:00
+[2024-10-30T17:04:09.198+0000] {base.py:68} INFO - Using connection ID 'datapstg' for task execution.
+[2024-10-30T17:04:09.202+0000] {taskinstance.py:1902} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 171, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 189, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/stage.py", line 30, in fetch_stock_data
+    """, (row['symbol'], row['date'], row['open'], row['close'], row['high'], row['low'], row['volume']))
+psycopg2.errors.UndefinedTable: relation "stock_data" does not exist
+LINE 2:             INSERT INTO stock_data (ticker, date, open, clos...
+                                ^
+
+[2024-10-30T17:04:09.209+0000] {taskinstance.py:1412} INFO - Marking task as UP_FOR_RETRY. dag_id=marketstack_dag, task_id=fetch_stock_data, execution_date=20241030T163026, start_date=20241030T170407, end_date=20241030T170409
+[2024-10-30T17:04:09.216+0000] {standard_task_runner.py:97} ERROR - Failed to execute job 15 for task fetch_stock_data (relation "stock_data" does not exist
+LINE 2:             INSERT INTO stock_data (ticker, date, open, clos...
+                                ^
+; 536)
+[2024-10-30T17:04:09.236+0000] {local_task_job.py:156} INFO - Task exited with return code 1
+[2024-10-30T17:04:09.261+0000] {local_task_job.py:279} INFO - 0 downstream tasks scheduled from follow-on schedule check

@@ -1,0 +1,32 @@
+[2024-10-30T16:30:28.314+0000] {taskinstance.py:1171} INFO - Dependencies all met for <TaskInstance: marketstack_dag.fetch_stock_data manual__2024-10-30T16:30:26.730631+00:00 [queued]>
+[2024-10-30T16:30:28.322+0000] {taskinstance.py:1171} INFO - Dependencies all met for <TaskInstance: marketstack_dag.fetch_stock_data manual__2024-10-30T16:30:26.730631+00:00 [queued]>
+[2024-10-30T16:30:28.322+0000] {taskinstance.py:1368} INFO - 
+--------------------------------------------------------------------------------
+[2024-10-30T16:30:28.323+0000] {taskinstance.py:1369} INFO - Starting attempt 1 of 2
+[2024-10-30T16:30:28.323+0000] {taskinstance.py:1370} INFO - 
+--------------------------------------------------------------------------------
+[2024-10-30T16:30:28.333+0000] {taskinstance.py:1389} INFO - Executing <Task(PythonOperator): fetch_stock_data> on 2024-10-30 16:30:26.730631+00:00
+[2024-10-30T16:30:28.337+0000] {standard_task_runner.py:52} INFO - Started process 188 to run task
+[2024-10-30T16:30:28.339+0000] {standard_task_runner.py:79} INFO - Running: ['***', 'tasks', 'run', 'marketstack_dag', 'fetch_stock_data', 'manual__2024-10-30T16:30:26.730631+00:00', '--job-id', '7', '--raw', '--subdir', 'DAGS_FOLDER/stage.py', '--cfg-path', '/tmp/tmpko7f4_xe', '--error-file', '/tmp/tmpewjbxtdf']
+[2024-10-30T16:30:28.340+0000] {standard_task_runner.py:80} INFO - Job 7: Subtask fetch_stock_data
+[2024-10-30T16:30:28.384+0000] {task_command.py:371} INFO - Running <TaskInstance: marketstack_dag.fetch_stock_data manual__2024-10-30T16:30:26.730631+00:00 [running]> on host 7028f6f95fdf
+[2024-10-30T16:30:28.439+0000] {taskinstance.py:1583} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=marketstack_dag
+AIRFLOW_CTX_TASK_ID=fetch_stock_data
+AIRFLOW_CTX_EXECUTION_DATE=2024-10-30T16:30:26.730631+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=manual__2024-10-30T16:30:26.730631+00:00
+[2024-10-30T16:30:29.390+0000] {taskinstance.py:1902} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 171, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 189, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/stage.py", line 20, in fetch_stock_data
+    stock_data = pd.DataFrame(data['data'])
+KeyError: 'data'
+[2024-10-30T16:30:29.400+0000] {taskinstance.py:1412} INFO - Marking task as UP_FOR_RETRY. dag_id=marketstack_dag, task_id=fetch_stock_data, execution_date=20241030T163026, start_date=20241030T163028, end_date=20241030T163029
+[2024-10-30T16:30:29.409+0000] {standard_task_runner.py:97} ERROR - Failed to execute job 7 for task fetch_stock_data ('data'; 188)
+[2024-10-30T16:30:29.434+0000] {local_task_job.py:156} INFO - Task exited with return code 1
+[2024-10-30T16:30:29.470+0000] {local_task_job.py:279} INFO - 0 downstream tasks scheduled from follow-on schedule check

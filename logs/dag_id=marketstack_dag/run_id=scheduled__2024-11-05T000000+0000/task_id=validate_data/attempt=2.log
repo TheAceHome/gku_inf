@@ -1,0 +1,36 @@
+[2024-11-06T09:32:13.077+0000] {taskinstance.py:1171} INFO - Dependencies all met for <TaskInstance: marketstack_dag.validate_data scheduled__2024-11-05T00:00:00+00:00 [queued]>
+[2024-11-06T09:32:13.082+0000] {taskinstance.py:1171} INFO - Dependencies all met for <TaskInstance: marketstack_dag.validate_data scheduled__2024-11-05T00:00:00+00:00 [queued]>
+[2024-11-06T09:32:13.082+0000] {taskinstance.py:1368} INFO - 
+--------------------------------------------------------------------------------
+[2024-11-06T09:32:13.083+0000] {taskinstance.py:1369} INFO - Starting attempt 2 of 2
+[2024-11-06T09:32:13.083+0000] {taskinstance.py:1370} INFO - 
+--------------------------------------------------------------------------------
+[2024-11-06T09:32:13.090+0000] {taskinstance.py:1389} INFO - Executing <Task(PythonOperator): validate_data> on 2024-11-05 00:00:00+00:00
+[2024-11-06T09:32:13.093+0000] {standard_task_runner.py:52} INFO - Started process 363 to run task
+[2024-11-06T09:32:13.094+0000] {standard_task_runner.py:79} INFO - Running: ['***', 'tasks', 'run', 'marketstack_dag', 'validate_data', 'scheduled__2024-11-05T00:00:00+00:00', '--job-id', '43', '--raw', '--subdir', 'DAGS_FOLDER/stage.py', '--cfg-path', '/tmp/tmpy_wbf8zj', '--error-file', '/tmp/tmpvvbk8iz3']
+[2024-11-06T09:32:13.095+0000] {standard_task_runner.py:80} INFO - Job 43: Subtask validate_data
+[2024-11-06T09:32:13.125+0000] {task_command.py:371} INFO - Running <TaskInstance: marketstack_dag.validate_data scheduled__2024-11-05T00:00:00+00:00 [running]> on host dd55d6bc6a7f
+[2024-11-06T09:32:13.161+0000] {taskinstance.py:1583} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=marketstack_dag
+AIRFLOW_CTX_TASK_ID=validate_data
+AIRFLOW_CTX_EXECUTION_DATE=2024-11-05T00:00:00+00:00
+AIRFLOW_CTX_TRY_NUMBER=2
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2024-11-05T00:00:00+00:00
+[2024-11-06T09:32:13.162+0000] {taskinstance.py:1902} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 171, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 189, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/stage.py", line 82, in <lambda>
+    python_callable=lambda: validate_data(fetch_data.output),
+  File "/opt/airflow/dags/stage.py", line 57, in validate_data
+    assert stock_data[['symbol', 'date', 'open', 'close', 'high', 'low', 'volume']].notnull().all().all(), "Найдены пустые значения"
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/xcom_arg.py", line 77, in __getitem__
+    raise ValueError(f"XComArg only supports str lookup, received {type(item).__name__}")
+ValueError: XComArg only supports str lookup, received list
+[2024-11-06T09:32:13.167+0000] {taskinstance.py:1412} INFO - Marking task as FAILED. dag_id=marketstack_dag, task_id=validate_data, execution_date=20241105T000000, start_date=20241106T093213, end_date=20241106T093213
+[2024-11-06T09:32:13.173+0000] {standard_task_runner.py:97} ERROR - Failed to execute job 43 for task validate_data (XComArg only supports str lookup, received list; 363)
+[2024-11-06T09:32:13.186+0000] {local_task_job.py:156} INFO - Task exited with return code 1
+[2024-11-06T09:32:13.208+0000] {local_task_job.py:279} INFO - 0 downstream tasks scheduled from follow-on schedule check

@@ -1,0 +1,27 @@
+[2024-11-06T10:07:46.297+0000] {taskinstance.py:1171} INFO - Dependencies all met for <TaskInstance: marketstack_dag.validate_data scheduled__2024-11-05T00:00:00+00:00 [queued]>
+[2024-11-06T10:07:46.303+0000] {taskinstance.py:1171} INFO - Dependencies all met for <TaskInstance: marketstack_dag.validate_data scheduled__2024-11-05T00:00:00+00:00 [queued]>
+[2024-11-06T10:07:46.303+0000] {taskinstance.py:1368} INFO - 
+--------------------------------------------------------------------------------
+[2024-11-06T10:07:46.303+0000] {taskinstance.py:1369} INFO - Starting attempt 6 of 7
+[2024-11-06T10:07:46.304+0000] {taskinstance.py:1370} INFO - 
+--------------------------------------------------------------------------------
+[2024-11-06T10:07:46.312+0000] {taskinstance.py:1389} INFO - Executing <Task(PythonOperator): validate_data> on 2024-11-05 00:00:00+00:00
+[2024-11-06T10:07:46.315+0000] {standard_task_runner.py:52} INFO - Started process 2145 to run task
+[2024-11-06T10:07:46.317+0000] {standard_task_runner.py:79} INFO - Running: ['***', 'tasks', 'run', 'marketstack_dag', 'validate_data', 'scheduled__2024-11-05T00:00:00+00:00', '--job-id', '48', '--raw', '--subdir', 'DAGS_FOLDER/stage.py', '--cfg-path', '/tmp/tmpyiv2j08s', '--error-file', '/tmp/tmpicrawk9d']
+[2024-11-06T10:07:46.318+0000] {standard_task_runner.py:80} INFO - Job 48: Subtask validate_data
+[2024-11-06T10:07:46.350+0000] {task_command.py:371} INFO - Running <TaskInstance: marketstack_dag.validate_data scheduled__2024-11-05T00:00:00+00:00 [running]> on host dd55d6bc6a7f
+[2024-11-06T10:07:46.388+0000] {taskinstance.py:1583} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=marketstack_dag
+AIRFLOW_CTX_TASK_ID=validate_data
+AIRFLOW_CTX_EXECUTION_DATE=2024-11-05T00:00:00+00:00
+AIRFLOW_CTX_TRY_NUMBER=6
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2024-11-05T00:00:00+00:00
+[2024-11-06T10:07:46.393+0000] {base.py:68} INFO - Using connection ID 'datapstg' for task execution.
+[2024-11-06T10:07:46.398+0000] {logging_mixin.py:115} INFO - Empty DataFrame
+Columns: [id, ticker, date, open, close, high, low, volume]
+Index: []
+[2024-11-06T10:07:46.401+0000] {python.py:173} INFO - Done. Returned value was: None
+[2024-11-06T10:07:46.408+0000] {taskinstance.py:1412} INFO - Marking task as SUCCESS. dag_id=marketstack_dag, task_id=validate_data, execution_date=20241105T000000, start_date=20241106T100746, end_date=20241106T100746
+[2024-11-06T10:07:46.449+0000] {local_task_job.py:156} INFO - Task exited with return code 0
+[2024-11-06T10:07:46.466+0000] {local_task_job.py:279} INFO - 0 downstream tasks scheduled from follow-on schedule check
